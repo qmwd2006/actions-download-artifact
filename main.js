@@ -20,7 +20,7 @@ async function main() {
         let runID = core.getInput("run_id")
         let runNumber = core.getInput("run_number")
 
-        const statuses = ';'.split(workflowConclusion)
+        const statuses = workflowConclusion.split(';')
 
         const client = github.getOctokit(token)
 
