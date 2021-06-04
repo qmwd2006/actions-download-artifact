@@ -39,7 +39,7 @@ async function main() {
         }
 
         if (artifacts.length > 0) {
-            artifacts = artifacts[0]
+            artifacts = [ artifacts[0] ]
         }
 
         if (artifacts.length == 0)
