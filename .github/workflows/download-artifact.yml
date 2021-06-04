@@ -32,7 +32,7 @@ jobs:
           workflow: download-artifact.yml
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
           path: ~/
-          workflow_conclusion: completed
+          workflow_conclusion: failure, success, timed_out
 
       - name: untar cache
         run: |
