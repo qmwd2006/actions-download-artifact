@@ -22,6 +22,10 @@ jobs:
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Set env.HOME to $HOME
+        run: echo ::set-env name=HOME::$HOME
+        shell: bash
+
       - name: Creating cache folder on /dev/disk/azure/resource-part1 (SSD)
         run: |
           mkdir -p $HOME/cache
@@ -31,7 +35,7 @@ jobs:
         with:
           workflow: download-artifact.yml
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
-          path: $HOME/
+          path: ${{env.HOME}}/
           branch: master
           workflow_conclusion: failure
 
