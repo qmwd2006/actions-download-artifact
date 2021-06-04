@@ -86,6 +86,9 @@ async function main() {
                     break
                 }
             }
+            if (runID) {
+              break
+            }
           }
         }
 
