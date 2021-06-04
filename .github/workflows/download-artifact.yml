@@ -49,11 +49,13 @@ jobs:
           tree $HOME/cache/
 
       - name: tar cache
+        if: always()
         run: |
           tar -zcvf $HOME/cache.tar.gz -C $HOME/cache .
           du -sh $HOME/cache.tar.gz
 
       - name: Uploading binary objects to cache
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
