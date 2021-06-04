@@ -42,7 +42,7 @@ jobs:
       - name: untar cache
         run: |
           # ls -R $HOME
-          tar -zxvf $HOME/cache.tar.gz -C $HOME/cache
+          tar -zxf $HOME/cache.tar.gz -C $HOME/cache
           rm -rf $HOME/cache.tar.gz
           tree $HOME/cache
 
