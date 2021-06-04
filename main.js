@@ -20,8 +20,6 @@ async function main() {
         let runID = core.getInput("run_id")
         let runNumber = core.getInput("run_number")
 
-        const statuses = workflowConclusion.split(';')
-
         const client = github.getOctokit(token)
 
         console.log("==> Repo:", owner + "/" + repo)
@@ -38,6 +36,10 @@ async function main() {
             })
         } else {
             artifacts = artifacts.data.artifacts
+        }
+
+        if (artifacts.length() > 0) {
+            artifacts = artifacts[0]
         }
 
         if (artifacts.length == 0)
