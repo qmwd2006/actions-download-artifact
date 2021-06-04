@@ -60,6 +60,7 @@ async function main() {
 
         if (!runID) {
           for(const status of statuses) {
+            console.log("==> Status:", status)
             for await (const runs of client.paginate.iterator(client.actions.listWorkflowRuns, {
                 owner: owner,
                 repo: repo,
