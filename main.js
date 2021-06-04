@@ -24,80 +24,11 @@ async function main() {
 
         const client = github.getOctokit(token)
 
-        console.log("==> Workflow:", workflow)
-
         console.log("==> Repo:", owner + "/" + repo)
 
-        console.log("==> Conclusion:", workflowConclusion)
-
-        if (pr) {
-            console.log("==> PR:", pr)
-
-            const pull = await client.pulls.get({
-                owner: owner,
-                repo: repo,
-                pull_number: pr,
-            })
-            commit = pull.data.head.sha
-        }
-
-        if (commit) {
-            console.log("==> Commit:", commit)
-        }
-
-        if (branch) {
-            branch = branch.replace(/^refs\/heads\//, "")
-            console.log("==> Branch:", branch)
-        }
-
-        if (event) {
-            console.log("==> Event:", event)
-        }
-
-        if (runNumber) {
-            console.log("==> RunNumber:", runNumber)
-        }
-
-        if (!runID) {
-          for(const s of statuses) {
-            const status = s.trim()
-            console.log("==> Status:", status)
-            for await (const runs of client.paginate.iterator(client.actions.listWorkflowRuns, {
-                owner: owner,
-                repo: repo,
-                workflow_id: workflow,
-                branch: branch,
-                event: event,
-                status: status,
-            }
-            )) {
-                const run = runs.data.find(r => {
-                    if (commit) {
-                        return r.head_sha == commit
-                    }
-                    if (runNumber) {
-                        return r.run_number == runNumber
-                    }
-                    return true
-                })
-
-                if (run) {
-                    runID = run.id
-                    break
-                }
-            }
-            if (runID) {
-              break
-            }
-          }
-        }
-
-        console.log("==> RunID:", runID)
-
-        let artifacts = await client.actions.listWorkflowRunArtifacts({
+        let artifacts = await client.actions.listArtifactsForRepo({
             owner: owner,
             repo: repo,
-            run_id: runID,
         })
 
         // One artifact or all if `name` input is not specified.
