@@ -37,11 +37,11 @@ jobs:
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
           path: ${{env.HOME}}/
           branch: master
-          workflow_conclusion: failure, success, timed_out
+          workflow_conclusion: success
 
       - name: untar cache
         run: |
-          ls -R $HOME
+          # ls -R $HOME
           tar -zxvf $HOME/cache.tar.gz -C $HOME/cache
           rm -rf $HOME/cache.tar.gz
           tree $HOME/cache
