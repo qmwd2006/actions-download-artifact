@@ -20,6 +20,8 @@ async function main() {
         let runID = core.getInput("run_id")
         let runNumber = core.getInput("run_number")
 
+        const statuses = ';'.split(workflowConclusion)
+
         const client = github.getOctokit(token)
 
         console.log("==> Workflow:", workflow)
@@ -57,13 +59,14 @@ async function main() {
         }
 
         if (!runID) {
+          for(const status of statuses) {
             for await (const runs of client.paginate.iterator(client.actions.listWorkflowRuns, {
                 owner: owner,
                 repo: repo,
                 workflow_id: workflow,
                 branch: branch,
                 event: event,
-                status: workflowConclusion,
+                status: status,
             }
             )) {
                 const run = runs.data.find(r => {
@@ -81,6 +84,7 @@ async function main() {
                     break
                 }
             }
+          }
         }
 
         console.log("==> RunID:", runID)
