@@ -29,10 +29,10 @@ jobs:
       - name: download last cache
         uses: qmwd2006/actions-download-artifact@master
         with:
-          workflow: $GITHUB_WORKFLOW
+          workflow: download-artifact.yml
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
           path: ~/
-          workflow_conclusion: success，timeout
+          # workflow_conclusion: success，timeout
 
       - name: untar cache
         run: |
