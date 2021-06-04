@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Set env.HOME to $HOME
-        run: echo ::set-env name=HOME::$HOME
+        run: echo "HOME=$HOME" >> $GITHUB_ENV
         shell: bash
 
       - name: Creating cache folder on /dev/disk/azure/resource-part1 (SSD)
