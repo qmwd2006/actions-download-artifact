@@ -27,7 +27,7 @@ jobs:
           mkdir -p $HOME/cache
 
       - name: download last cache
-        uses: qmwd2006/actions-download-artifact@latest
+        uses: qmwd2006/actions-download-artifact@master
         with:
           workflow: $GITHUB_WORKFLOW
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
