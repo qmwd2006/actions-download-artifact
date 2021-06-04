@@ -42,9 +42,9 @@ jobs:
       - name: untar cache
         run: |
           # ls -R $HOME
-          tar -zxf $HOME/cache.tar.gz -C $HOME/cache
+          tar -zxvf $HOME/cache.tar.gz -C $HOME/cache
           rm -rf $HOME/cache.tar.gz
-          tree $HOME/cache
+          # tree $HOME/cache
 
       - name: gen a file in cache
         if: always()
