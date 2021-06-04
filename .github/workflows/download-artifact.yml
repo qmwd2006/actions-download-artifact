@@ -33,7 +33,7 @@ jobs:
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
           path: ~/
           branch: master
-          workflow_conclusion: failure, success, timed_out
+          workflow_conclusion: failure
 
       - name: untar cache
         run: |
