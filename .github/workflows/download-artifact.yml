@@ -66,3 +66,18 @@ jobs:
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
           path: ~/cache.tar.gz
           retention-days: 2
+
+      - name: download last cache again
+        uses: qmwd2006/actions-download-artifact@master
+        with:
+          workflow: download-artifact.yml
+          name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
+          path: ${{env.HOME}}/
+
+      - name: untar cache
+        run: |
+          # ls -R $HOME
+          rm -rf $HOME/cache/*
+          tar -zxvf $HOME/cache.tar.gz -C $HOME/cache
+          rm -rf $HOME/cache.tar.gz
+          # tree $HOME/cache
