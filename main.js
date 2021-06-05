@@ -32,7 +32,7 @@ async function main() {
         // One artifact or all if `name` input is not specified.
         if (name) {
             artifacts = artifacts.data.artifacts.filter((artifact) => {
-                return artifact.name.indexOf(name)
+                return artifact.name.indexOf(name) === 0
             })
         } else {
             artifacts = artifacts.data.artifacts
