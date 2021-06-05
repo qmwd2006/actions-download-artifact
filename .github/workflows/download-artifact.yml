@@ -79,6 +79,22 @@ jobs:
           path: ~/cache.tar.gz
           retention-days: 2
 
+      - name: Uploading binary objects to cache
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz.1
+          path: ~/cache.tar.gz
+          retention-days: 2
+
+      - name: Uploading binary objects to cache
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz.2
+          path: ~/cache.tar.gz
+          retention-days: 2
+
       - name: download last cache again
         uses: qmwd2006/actions-download-artifact@master
         with:
