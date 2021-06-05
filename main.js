@@ -38,10 +38,6 @@ async function main() {
             artifacts = artifacts.data.artifacts
         }
 
-        if (artifacts.length > 0) {
-            artifacts = [ artifacts[0] ]
-        }
-
         if (artifacts.length == 0)
             throw new Error("no artifacts found")
 
@@ -49,6 +45,11 @@ async function main() {
             console.log("==> Artifact:", artifact.id)
 
             const size = filesize(artifact.size_in_bytes, { base: 10 })
+
+            if (artifact.size_in_bytes > 2 * 1024 * 1024 * 1024) {
+                console.log(`==> Size to big, skip it: ${artifact.name}.zip (${size})`)
+                continue;
+            }
 
             console.log(`==> Downloading: ${artifact.name}.zip (${size})`)
 
