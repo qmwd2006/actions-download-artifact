@@ -86,6 +86,12 @@ jobs:
           name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
           path: ${{env.HOME}}/
 
+      - name: Downloading binary objects cache to $HOME/cache
+        uses: actions/download-artifact@v2
+        with:
+          name: kiwibrowser-ccache-${{ matrix.platform }}.tar.gz
+          path: ~/
+
       - name: untar cache
         run: |
           # ls -R $HOME
