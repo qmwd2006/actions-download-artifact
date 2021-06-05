@@ -26,9 +26,17 @@ jobs:
         run: echo "HOME=$HOME" >> $GITHUB_ENV
         shell: bash
 
+      #- name: Creating cache folder on /dev/disk/azure/resource-part1 (SSD)
+      #  run: |
+      #    mkdir -p $HOME/cache
+
       - name: Creating cache folder on /dev/disk/azure/resource-part1 (SSD)
         run: |
-          mkdir -p $HOME/cache
+          sudo mkdir -p /mnt/cache
+          sudo chown -R runner:docker /mnt/cache
+          
+      - name: Creating symlink in $HOME/cache pointing to cache on /dev/disk/azure/resource-part1
+        run: ln -s /mnt/cache $HOME/
 
       - name: download last cache
         uses: qmwd2006/actions-download-artifact@master
