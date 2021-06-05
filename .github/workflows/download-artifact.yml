@@ -6,6 +6,10 @@ name: download-artifact
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      remote:
+        required: true
+        default: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -89,3 +93,7 @@ jobs:
           tar -zxvf $HOME/cache.tar.gz -C $HOME/cache
           rm -rf $HOME/cache.tar.gz
           # tree $HOME/cache
+
+      - name: Setup Debug Session
+        if: ${{ Boolean(github.event.inputs.remote) == 'true' }}
+        uses: csexton/debugger-action@master
