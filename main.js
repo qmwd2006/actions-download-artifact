@@ -74,6 +74,8 @@ async function main() {
             })
 
             adm.extractAllTo(dir, true)
+
+            break
         }
     } catch (error) {
         core.setFailed(error.message)
