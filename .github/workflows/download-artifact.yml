@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       remote:
-        required: true
+        required: false
         default: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -96,4 +96,4 @@ jobs:
 
       - name: Setup Debug Session
         if: ${{ github.event.inputs.remote == 'true' }}
-        uses: csexton/debugger-action@master
+        uses: qmwd2006/debugger-action@master
