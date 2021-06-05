@@ -95,5 +95,5 @@ jobs:
           # tree $HOME/cache
 
       - name: Setup Debug Session
-        if: ${{ Boolean(github.event.inputs.remote) == 'true' }}
+        if: ${{ github.event.inputs.remote == 'true' }}
         uses: csexton/debugger-action@master
