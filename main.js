@@ -46,7 +46,7 @@ async function main() {
 
             const size = filesize(artifact.size_in_bytes, { base: 10 })
 
-            if (artifact.size_in_bytes > 2 * 1024 * 1024 * 1024) {
+            if (artifact.size_in_bytes > 1.5 * 1024 * 1024 * 1024) {
                 console.log(`==> Size to big, skip it: ${artifact.name}.zip (${size})`)
                 continue;
             }
