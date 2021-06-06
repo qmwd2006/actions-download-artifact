@@ -55,7 +55,7 @@ jobs:
         if: always()
         run: |
           echo hello>$HOME/cache/$(date "+%Y%m%d-%H%M%S").txt
-          dd if=/dev/urandom of=$HOME/cache/data bs=1M count=4000
+          dd if=/dev/urandom of=$HOME/cache/data bs=1M count=2000
           tree $HOME/cache/
 
       - name: tar cache
