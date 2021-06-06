@@ -46,6 +46,7 @@ jobs:
         with:
           path: ${{env.HOME}}/cache/
           key: kiwibrowser-ccache-${{ matrix.platform }}
+          force-cache: true
 
       - name: gen a file in cache
         if: always()
