@@ -48,7 +48,7 @@ jobs:
           repo: "qmwd2006/actions-download-artifact"
           version: "tags/ccache"
           file: "cache.tar.gz"
-          target: "${{env.HOME}}/cache.tar.gz"
+          target: "${{env.HOME}}/cache/cache.tar.gz"
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: gen a file in cache
