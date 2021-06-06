@@ -42,7 +42,7 @@ jobs:
       - name: Creating symlink in $HOME/cache pointing to cache on /dev/disk/azure/resource-part1
         run: ln -s /mnt/cache $HOME/
 
-      - uses: actions/cache@v2
+      - uses: qmwd2006/actions-cache@master
         with:
           path: ${{env.HOME}}/cache/
           key: kiwibrowser-ccache-${{ matrix.platform }}
