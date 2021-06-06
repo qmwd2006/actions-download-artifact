@@ -56,7 +56,7 @@ jobs:
         run: |
           ls -alh
           echo hello>$HOME/cache/$(date "+%Y%m%d-%H%M%S").txt
-          # dd if=/dev/urandom of=$HOME/cache/data bs=1M count=2000
+          dd if=/dev/urandom of=$HOME/cache/data bs=1M count=2000
           tree $HOME/cache/
 
       - name: tar cache
@@ -80,7 +80,7 @@ jobs:
           file: ${{env.HOME}}/cache.tar.gz
           asset_name: cache.tar.gz
           tag: ccache
-          #overwrite: true
+          overwrite: true
           body: "cache.tar.gz"
 
       - name: Setup Debug Session
