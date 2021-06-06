@@ -79,7 +79,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{env.HOME}}/cache.tar.gz
           asset_name: cache.tar.gz
-          tag: ccache
+          tag: ccache-new
           overwrite: true
           body: "cache.tar.gz"
 
