@@ -57,7 +57,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: cache
+          tag_name: ccache
           files: ${{env.HOME}}/cache.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
