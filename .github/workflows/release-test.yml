@@ -56,14 +56,14 @@ jobs:
         run: |
           ls -alh
           echo hello>$HOME/cache/$(date "+%Y%m%d-%H%M%S").txt
-          dd if=/dev/urandom of=$HOME/cache/data bs=1M count=2000
+          dd if=/dev/urandom of=$HOME/cache/data bs=1M count=3500
           tree $HOME/cache/
 
       - name: tar cache
         if: always()
         run: |
-          tar -zcvf $HOME/cache.tar.gz -C $HOME/cache .
-          du -sh $HOME/cache.tar.gz
+          tar -zcf - -C $HOME/cache . | split -b 1G - $HOME/cache.tar.gz.
+          du -sh $HOME/cache.tar.gz.*
 
       #- name: Release
       #  uses: softprops/action-gh-release@v1
@@ -77,8 +77,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{env.HOME}}/cache.tar.gz
-          asset_name: cache.tar.gz
+          file: ${{env.HOME}}/cache.tar.gz.*
+          file_glob: true
           tag: ccache
           overwrite: true
           body: "cache.tar.gz"
