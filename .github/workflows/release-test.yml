@@ -65,7 +65,7 @@ jobs:
         run: |
           ls -alh
           echo hello>$HOME/cache/$(date "+%Y%m%d-%H%M%S").txt
-          dd if=/dev/urandom of=$HOME/cache/data bs=1M count=3500
+          # dd if=/dev/urandom of=$HOME/cache/data bs=1M count=3500
           tree $HOME/cache/
 
       - name: tar cache
