@@ -51,6 +51,15 @@ jobs:
       #    target: "cache.tar.gz"
       #    token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Download Release Asset
+        uses: i3h/download-release-asset@v1
+        with:
+          owner: qmwd2006
+          repo: actions-download-artifact
+          tag: ccache
+          file: /cache.tar.gz.*/
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: gen a file in cache
         if: always()
         run: |
