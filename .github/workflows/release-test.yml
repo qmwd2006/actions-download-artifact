@@ -62,7 +62,7 @@ jobs:
       - name: tar cache
         if: always()
         run: |
-          tar -zcf - -C $HOME/cache . | split -b 1GB - $HOME/cache.tar.gz.
+          tar -zcf - -C $HOME/cache . | split -b 1G - $HOME/cache.tar.gz.
           du -sh $HOME/cache.tar.gz.*
 
       #- name: Release
