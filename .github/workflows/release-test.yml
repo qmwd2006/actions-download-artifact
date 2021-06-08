@@ -62,7 +62,7 @@ jobs:
 
       - name: untar cache
         run: |
-          cat cache.tar.gz.* | tar -zxf - -C $HOME/cache
+          ls cache.tar.gz.*>/dev/null 2>&1 && { cat cache.tar.gz.* | tar -zxf - -C $HOME/cache ; }
           rm -rf cache.tar.gz.*
 
       - name: gen a file in cache
