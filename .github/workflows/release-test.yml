@@ -79,8 +79,8 @@ jobs:
           delete_release: true # default: false
           tag_name: ccache # tag name to delete
           # repo: <owner>/<repoName> # target repo (optional). defaults to repo running this action
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
