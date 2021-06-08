@@ -76,11 +76,11 @@ jobs:
       - name: Delete Release First
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
         with:
-        delete_release: true # default: false
-        tag_name: ccache # tag name to delete
-        # repo: <owner>/<repoName> # target repo (optional). defaults to repo running this action
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          delete_release: true # default: false
+          tag_name: ccache # tag name to delete
+          # repo: <owner>/<repoName> # target repo (optional). defaults to repo running this action
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
